@@ -1,0 +1,15 @@
+osx_image: xcode9
+language: objective-c
+cache:
+  - bundler
+  - cocoapods
+branches:
+  only:
+    - develop
+    - master
+notifications:
+  email: false
+before_install:
+  - gem install bundler
+  - bundle install
+script: bundle exec fastlane build
