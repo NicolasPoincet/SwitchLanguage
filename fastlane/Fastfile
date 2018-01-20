@@ -1,0 +1,14 @@
+lane :build do
+    scan
+    if git_branch() == "master"
+        deploy_pod
+    elsif git_branch() == "develop"
+        print("Develop")
+    end
+end
+
+lane :deploy_pod do
+    print("Deploy Pod")
+    # pod_lib_lint
+    # pod_push
+end
