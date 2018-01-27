@@ -1,4 +1,4 @@
-desc "Run before each"
+desc "Run before all lane"
 before_all do |lane, options|
     if lane != :new_project_version
         scan
@@ -20,8 +20,8 @@ end
 
 desc "Deploy pod to Cocoapods"
 lane :deploy_pod do
-    # pod_lib_lint
-    # pod_push
+    pod_lib_lint
+    pod_push
 end
 
 desc "Update project version to the new one"
@@ -36,7 +36,7 @@ lane :new_project_version do |options|
         increment_build_number
     
         version_bump_podspec(
-            path: "SwitchFramework.podspec",
+            path: "SwitchLanguage.podspec",
             version_number: CURRENT_VERSION
         )
     

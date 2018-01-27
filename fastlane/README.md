@@ -19,7 +19,7 @@ or alternatively using `brew cask install fastlane`
 ```
 fastlane deploy
 ```
-Run before each
+Run before all lane
 ### deploy_develop
 ```
 fastlane deploy_develop
