@@ -1,7 +1,9 @@
 desc "Run before each"
 before_all do |lane, options|
     if lane != :new_project_version
-        scan
+        scan(
+            devices: ["iPhone 6", "iPad Air"]
+        )
     end
 end
 
