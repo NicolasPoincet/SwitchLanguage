@@ -1,14 +1,52 @@
-lane :build do
-    # scan
-    if git_branch() == "master"
-        deploy_pod
-    elsif git_branch() == "develop"
-        print("Develop")
+desc "Run before each"
+before_all do |lane, options|
+    if lane != :new_project_version
+        scan
     end
 end
 
+lane :deploy do
+    if git_branch() == "master"
+        deploy_pod
+    elsif git_branch() == "develop"
+        deploy_develop
+    end
+end
+
+desc "Deployment for tests"
+lane :deploy_develop do
+
+end
+
+desc "Deploy pod to Cocoapods"
 lane :deploy_pod do
-    print("Deploy Pod")
     # pod_lib_lint
     # pod_push
+end
+
+desc "Update project version to the new one"
+desc "cmd: fastlane new_project_version version:\"1.3.9\""
+lane :new_project_version do |options|
+
+    if options[:version]
+        CURRENT_VERSION = increment_version_number(
+            version_number: options[:version]
+        )
+
+        increment_build_number
+    
+        version_bump_podspec(
+            path: "SwitchFramework.podspec",
+            version_number: CURRENT_VERSION
+        )
+    
+        commit_version_bump(
+            message: "Update version number to " + CURRENT_VERSION
+        )
+    
+        add_git_tag(
+            tag: CURRENT_VERSION
+        )
+    end
+
 end

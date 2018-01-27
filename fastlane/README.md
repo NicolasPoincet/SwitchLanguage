@@ -15,16 +15,28 @@ Install _fastlane_ using
 or alternatively using `brew cask install fastlane`
 
 # Available Actions
-### build
+### deploy
 ```
-fastlane build
+fastlane deploy
 ```
-
+Run before each
+### deploy_develop
+```
+fastlane deploy_develop
+```
+Deployment for tests
 ### deploy_pod
 ```
 fastlane deploy_pod
 ```
+Deploy pod to Cocoapods
+### new_project_version
+```
+fastlane new_project_version
+```
+Update project version to the new one
 
+cmd: fastlane new_project_version version:"1.3.9"
 
 ----
 

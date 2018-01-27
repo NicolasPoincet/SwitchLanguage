@@ -12,4 +12,4 @@ notifications:
 before_install:
   - gem install bundler
   - bundle install
-script: bundle exec fastlane build
+script: bundle exec fastlane deploy
