@@ -1,5 +1,5 @@
 lane :build do
-    scan
+    # scan
     if git_branch() == "master"
         deploy_pod
     elsif git_branch() == "develop"
