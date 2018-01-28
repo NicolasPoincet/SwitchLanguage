@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		13B98D47201E6A3300C14D53 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B98D46201E6A3300C14D53 /* Language.swift */; };
+		134C4E82201E6D1000EF4FB5 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134C4E81201E6D1000EF4FB5 /* Language.swift */; };
 		13D870B82010F0010042070F /* CIFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13D870AE2010F0010042070F /* CIFramework.framework */; };
 		13D870BD2010F0010042070F /* CIFrameworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D870BC2010F0010042070F /* CIFrameworkTests.swift */; };
 		13D870BF2010F0010042070F /* CIFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 13D870B12010F0010042070F /* CIFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -24,7 +24,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		13B98D46201E6A3300C14D53 /* Language.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Language.swift; path = ../../../../Desktop/Language.swift; sourceTree = "<group>"; };
+		134C4E81201E6D1000EF4FB5 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		13D870AE2010F0010042070F /* CIFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CIFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		13D870B12010F0010042070F /* CIFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIFramework.h; sourceTree = "<group>"; };
 		13D870B22010F0010042070F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -75,7 +75,7 @@
 			children = (
 				13D870B12010F0010042070F /* CIFramework.h */,
 				13D870B22010F0010042070F /* Info.plist */,
-				13B98D46201E6A3300C14D53 /* Language.swift */,
+				134C4E81201E6D1000EF4FB5 /* Language.swift */,
 			);
 			path = CIFramework;
 			sourceTree = "<group>";
@@ -200,7 +200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13B98D47201E6A3300C14D53 /* Language.swift in Sources */,
+				134C4E82201E6D1000EF4FB5 /* Language.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
