@@ -1,4 +1,4 @@
-osx_image: xcode9
+osx_image: xcode9.2
 language: objective-c
 cache:
   - bundler
@@ -12,4 +12,4 @@ notifications:
 before_install:
   - gem install bundler
   - bundle install
-script: bundle exec fastlane build
+script: bundle exec fastlane deploy
