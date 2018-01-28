@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		13B98D47201E6A3300C14D53 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B98D46201E6A3300C14D53 /* Language.swift */; };
 		13D870B82010F0010042070F /* CIFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13D870AE2010F0010042070F /* CIFramework.framework */; };
 		13D870BD2010F0010042070F /* CIFrameworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D870BC2010F0010042070F /* CIFrameworkTests.swift */; };
 		13D870BF2010F0010042070F /* CIFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 13D870B12010F0010042070F /* CIFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -23,6 +24,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		13B98D46201E6A3300C14D53 /* Language.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Language.swift; path = ../../../../Desktop/Language.swift; sourceTree = "<group>"; };
 		13D870AE2010F0010042070F /* CIFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CIFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		13D870B12010F0010042070F /* CIFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIFramework.h; sourceTree = "<group>"; };
 		13D870B22010F0010042070F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 			children = (
 				13D870B12010F0010042070F /* CIFramework.h */,
 				13D870B22010F0010042070F /* Info.plist */,
+				13B98D46201E6A3300C14D53 /* Language.swift */,
 			);
 			path = CIFramework;
 			sourceTree = "<group>";
@@ -148,6 +151,7 @@
 				TargetAttributes = {
 					13D870AD2010F0010042070F = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 					13D870B62010F0010042070F = {
@@ -196,6 +200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13B98D47201E6A3300C14D53 /* Language.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,6 +339,7 @@
 		13D870C32010F0010042070F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -346,6 +352,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.nicolas.poincet.CIFramework;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -354,6 +361,7 @@
 		13D870C42010F0010042070F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -374,6 +382,7 @@
 		13D870C62010F0010042070F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = CIFrameworkTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -387,6 +396,7 @@
 		13D870C72010F0010042070F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = CIFrameworkTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
