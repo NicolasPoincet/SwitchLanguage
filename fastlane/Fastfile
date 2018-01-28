@@ -39,14 +39,20 @@ lane :new_project_version do |options|
             path: "SwitchLanguage.podspec",
             version_number: CURRENT_VERSION
         )
-    
-        commit_version_bump(
+
+        git_commit(
+            path: ["CIFramework.xcodeproj/project.pbxproj",
+                    "CIFramework/Info.plist",
+                    "CIFrameworkTests/Info.plist",
+                    "SwitchLanguage.podspec"], 
             message: "Update version number to " + CURRENT_VERSION
         )
-    
+
         add_git_tag(
             tag: CURRENT_VERSION
         )
+
+        push_to_git_remote
     end
 
 end
