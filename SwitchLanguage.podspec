@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
   s.license = 'MIT'
   s.summary = 'Manage translation easily in your app'
   s.homepage = 'https://github.com/NicolasPoincet/SwitchLanguage'
-  s.authors = { 'Nicolas Poincet' => '', '' => '', '' => ''  }
+  s.authors = { 'Bérangère LA TOUCHE' => '', 'Hoang-Nam NGUYEN' => '', 'Nicolas POINCET' => ''  }
   s.source = { :git => 'https://github.com/NicolasPoincet/SwitchLanguage.git', :tag => s.version }
 
   s.ios.deployment_target = '8.0'
