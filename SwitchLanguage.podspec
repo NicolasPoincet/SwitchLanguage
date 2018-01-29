@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'SwitchLanguage'
-  s.version = '1.0.4'
+  s.version = '1.0.5'
   s.license = 'MIT'
   s.summary = 'Manage translation easily in your app'
   s.homepage = 'https://github.com/NicolasPoincet/SwitchLanguage'
