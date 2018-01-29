@@ -10,6 +10,7 @@
 		134C4E82201E6D1000EF4FB5 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134C4E81201E6D1000EF4FB5 /* Language.swift */; };
 		13548894201FAD2300DB89EE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13548893201FAD2300DB89EE /* UIKit.framework */; };
 		13548896201FAD3700DB89EE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13548895201FAD3700DB89EE /* Foundation.framework */; };
+		13548897201FC67000DB89EE /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134C4E81201E6D1000EF4FB5 /* Language.swift */; };
 		13D870B82010F0010042070F /* CIFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13D870AE2010F0010042070F /* CIFramework.framework */; };
 		13D870BD2010F0010042070F /* CIFrameworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D870BC2010F0010042070F /* CIFrameworkTests.swift */; };
 		13D870BF2010F0010042070F /* CIFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 13D870B12010F0010042070F /* CIFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -225,6 +226,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13D870BD2010F0010042070F /* CIFrameworkTests.swift in Sources */,
+				13548897201FC67000DB89EE /* Language.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
