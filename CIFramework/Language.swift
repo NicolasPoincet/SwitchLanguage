@@ -44,7 +44,7 @@ public extension String {
     }
 }
 
-class Language : NSObject {
+public class Language : NSObject {
     
     class func getAllLanguages() -> [String] {
         var listLanguages = Bundle.main.localizations
