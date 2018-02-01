@@ -20,17 +20,15 @@ public let LCLLanguageChangeNotification = "LCLLanguageChangeNotification"
 public extension String {
     
     /**
-     * Returns: The localized string.
+     It search the localized string
+     
+     @param tableName: The receiver’s string table to search.
+     
+     @param bundle: The receiver’s bundle to search.
+     
+     @return The localized string.
      */
-    func localized() -> String {
-        return localized(using: nil, in: .main)
-    }
-    
-    func localized(using tableName: String?) -> String {
-        return localized(using: tableName, in: .main)
-    }
-    
-    func localized(using tableName: String?, in bundle: Bundle?) -> String {
+    public func localized(using tableName: String?, in bundle: Bundle? = .main) -> String {
         let bundle: Bundle = bundle ?? .main
         if let path = bundle.path(forResource: Language.getCurrentLanguage(), ofType: "lproj"),
             let bundle = Bundle(path: path) {
@@ -45,8 +43,13 @@ public extension String {
 }
 
 public class Language : NSObject {
-    
-    class func getAllLanguages() -> [String] {
+
+    /**
+     It get the list of all available languages in the app.
+     
+     @return Array of available languages.
+     */
+    public class func getAllLanguages() -> [String] {
         var listLanguages = Bundle.main.localizations
         
         if let indexOfBase = listLanguages.index(of: LCLBaseBundle) {
@@ -56,14 +59,24 @@ public class Language : NSObject {
         return listLanguages
     }
     
-    class func getCurrentLanguage() -> String {
+    /**
+     It get the current language of the app.
+     
+     @return String of current language.
+     */
+    public class func getCurrentLanguage() -> String {
         if let currentLanguage = UserDefaults.standard.object(forKey: LCLCurrentLanguageKey) as? String {
             return currentLanguage
         }
         return getDefaultLanguage()
     }
     
-    open class func setCurrentLanguage(_ language: String) {
+    /**
+     It change the current language of the app.
+     
+     @param language String correspondant to desired language.
+     */
+    public class func setCurrentLanguage(_ language: String) {
         let selectedLanguage = getAllLanguages().contains(language) ? language : getDefaultLanguage()
         if (selectedLanguage != getCurrentLanguage()){
             UserDefaults.standard.set(selectedLanguage, forKey: LCLCurrentLanguageKey)
@@ -72,7 +85,12 @@ public class Language : NSObject {
         }
     }
     
-    class func getDefaultLanguage() -> String {
+    /**
+     It get the default language of the app.
+     
+     @return String of app default language.
+     */
+    public class func getDefaultLanguage() -> String {
         var defaultLanguage: String = String()
         guard let preferredLanguage = Bundle.main.preferredLocalizations.first else {
             return LCLDefaultLanguage
@@ -87,12 +105,23 @@ public class Language : NSObject {
         return defaultLanguage
     }
     
-    class func resetCurrentLanguageToDefault() {
+    /**
+     It reset the language with the default language of the app.
+     
+     @return String array of available languages.
+     */
+    public class func resetCurrentLanguageToDefault() {
         setCurrentLanguage(self.getDefaultLanguage())
     }
     
-    
-    class func displayNameForLanguage(_ language: String) -> String {
+    /**
+     It get the current language and display his name.
+     
+     @param language String correspondant to desired language.
+     
+     @return String name of the current languages.
+     */
+    public class func displayNameForLanguage(_ language: String) -> String {
         let locale : NSLocale = NSLocale(localeIdentifier: getCurrentLanguage())
         if let displayName = locale.displayName(forKey: NSLocale.Key.identifier, value: language) {
             return displayName
@@ -100,9 +129,16 @@ public class Language : NSObject {
         return String()
     }
     
-    class func basicAlert(_ languages: [String]) -> UIAlertController {
+    /**
+     It display a basic alert with each names of available languages of the app.
+     
+     @param [String] array of all available languages.
+     
+     @return UIAlertController alert action to change the language.
+     */
+    public class func basicAlert(_ languages: [String]) -> UIAlertController {
         
-        let actionSheet = UIAlertController(title: nil, message: "Switch Language".localized(), preferredStyle: UIAlertControllerStyle.actionSheet)
+        let actionSheet = UIAlertController(title: nil, message: "Switch Language".localized(using: "Localizable"), preferredStyle: UIAlertControllerStyle.actionSheet)
         for lang in languages {
             let displayName = Language.displayNameForLanguage(lang)
             let languageAction = UIAlertAction(title: displayName, style: .default, handler: {
@@ -111,16 +147,23 @@ public class Language : NSObject {
             })
             actionSheet.addAction(languageAction)
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: {
+        let cancelAction = UIAlertAction(title: "Cancel".localized(using: "Localizable"), style: UIAlertActionStyle.cancel, handler: {
             (alert: UIAlertAction) -> Void in
         })
         actionSheet.addAction(cancelAction)
         return actionSheet
     }
     
-    class func flagAlert(_ languages: [String]) -> UIAlertController {
+    /**
+     It display an alert with the flags of each available languages of the app.
+     
+     @param [String] array of all available languages.
+     
+     @return UIAlertController alert action to change the language.
+     */
+    public class func flagAlert(_ languages: [String]) -> UIAlertController {
         
-        let actionSheet = UIAlertController(title: nil, message: "Switch Language".localized(), preferredStyle: UIAlertControllerStyle.actionSheet)
+        let actionSheet = UIAlertController(title: nil, message: "Switch Language".localized(using: "Localizable"), preferredStyle: UIAlertControllerStyle.actionSheet)
         
         let imageView = UIImageView()
         actionSheet.view.addSubview(imageView)
@@ -153,14 +196,23 @@ public class Language : NSObject {
 
 extension Language {
     
+    /**
+     Request to get the flag image of the languages.
+     
+     @param URL of the awaited image
+     */
     class func getDataFromUrl(url : URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
         URLSession.shared.dataTask(with: url) {
             data, response, error in completion(data, response, error)
             }.resume()
     }
     
+    /**
+     Call the request to download the awaited image for languages.
+     
+     @param URL of the awaited image
+     */
     class func downloadImage(url: URL,  completionHandler: @escaping (UIImage?) -> Void) {
-        print("URL:", url)
         getDataFromUrl(url: url) { data, response, error in
             guard let data = data, error == nil else { return }
             DispatchQueue.main.async() {
