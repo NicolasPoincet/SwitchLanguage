@@ -15,13 +15,35 @@ end
 
 desc "Deployment for tests"
 lane :deploy_develop do
-
+    slack(
+        slack_url: ENV["SLACK_URL"],
+        message: "Build success on develop",
+        channel: "#integration",
+        success: true,
+        payload: { 
+            "Build Date" => Time.new.to_s,
+            "Built by" => "Travis",
+            "Branch" => git_branch()
+        }
+    )
 end
 
 desc "Deploy pod to Cocoapods"
 lane :deploy_pod do
     pod_lib_lint
     pod_push
+
+    slack(
+        slack_url: ENV["SLACK_URL"],
+        message: "Framework successfully released in version " + get_version_number,
+        channel: "#integration",
+        success: true,
+        payload: { 
+            "Build Date" => Time.new.to_s,
+            "Built by" => "Travis",
+            "Branch" => git_branch()
+        }
+    )
 end
 
 desc "Update project version to the new one"
@@ -55,4 +77,21 @@ lane :new_project_version do |options|
         push_to_git_remote
     end
 
+end
+
+desc "Called on error"
+error do |lane, exception|
+    slack(
+        slack_url: ENV["SLACK_URL"],
+        message: "Error on lane " + lane,
+        channel: "#integration",
+        success: false,
+        payload: { 
+            "Build Date" => Time.new.to_s,
+            "Built by" => "Travis",
+            "Branch" => git_branch(),
+            "lane" => lane,
+            "Exception" => exception
+        }
+    )
 end
