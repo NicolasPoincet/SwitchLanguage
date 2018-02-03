@@ -1,0 +1,9 @@
+/* 
+  Localizable.strings
+  CIFramework
+
+  Created by Nicolas POINCET on 03/02/2018.
+  Copyright © 2018 Nicolas POINCET. All rights reserved.
+*/
+
+"HELLO" = "Buenos dias";
