@@ -1,10 +1,14 @@
 desc "Run before all lane"
 before_all do |lane, options|
+    MY_PROJECT_NAME = "SwitchLanguage"
+    
     if lane != :new_project_version
         scan
     end
 end
 
+
+desc "Deploy project"
 lane :deploy do
     if git_branch() == "master"
         deploy_pod
@@ -12,6 +16,7 @@ lane :deploy do
         deploy_develop
     end
 end
+
 
 desc "Deployment for tests"
 lane :deploy_develop do
@@ -27,6 +32,7 @@ lane :deploy_develop do
         }
     )
 end
+
 
 desc "Deploy pod to Cocoapods"
 lane :deploy_pod do
@@ -45,6 +51,7 @@ lane :deploy_pod do
         }
     )
 end
+
 
 desc "Update project version to the new one"
 desc "cmd: fastlane new_project_version version:\"1.3.9\""
@@ -75,9 +82,19 @@ lane :new_project_version do |options|
         )
 
         push_to_git_remote
+
+
+        notification(
+            app_icon: "https://assets-cdn.github.com/images/modules/logos_page/GitHub-Logo.png",
+            title: MY_PROJECT_NAME,
+            subtitle: "Project version updated",
+            message: "The project version is set to " + CURRENT_VERSION
+        )
+
     end
 
 end
+
 
 desc "Called on error"
 error do |lane, exception|
