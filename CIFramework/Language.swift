@@ -79,8 +79,8 @@ public class Language : NSObject {
      
      @return Array of available languages.
      */
-    public class func getAllLanguages() -> [String] {
-        var listLanguages = Bundle.main.localizations
+    public class func getAllLanguages(_ bundle: Bundle) -> [String] {
+        var listLanguages = bundle.localizations
         
         if let indexOfBase = listLanguages.index(of: LCLBaseBundle) {
             listLanguages.remove(at: indexOfBase)
@@ -106,8 +106,8 @@ public class Language : NSObject {
      
      @param language String correspondant to desired language.
      */
-    public class func setCurrentLanguage(_ language: String) {
-        let selectedLanguage = getAllLanguages().contains(language) ? language : getDefaultLanguage()
+    public class func setCurrentLanguage(_ language: String, bundle: Bundle = .main) {
+        let selectedLanguage = getAllLanguages(bundle).contains(language) ? language : getDefaultLanguage()
         if (selectedLanguage != getCurrentLanguage()){
             UserDefaults.standard.set(selectedLanguage, forKey: LCLCurrentLanguageKey)
             UserDefaults.standard.synchronize()
@@ -120,12 +120,12 @@ public class Language : NSObject {
      
      @return String of app default language.
      */
-    public class func getDefaultLanguage() -> String {
+    public class func getDefaultLanguage(bundle: Bundle = .main) -> String {
         var defaultLanguage: String = String()
-        guard let preferredLanguage = Bundle.main.preferredLocalizations.first else {
+        guard let preferredLanguage = bundle.preferredLocalizations.first else {
             return LCLDefaultLanguage
         }
-        let availableLanguages: [String] = getAllLanguages()
+        let availableLanguages: [String] = getAllLanguages(bundle)
         if (availableLanguages.contains(preferredLanguage)) {
             defaultLanguage = preferredLanguage
         }
