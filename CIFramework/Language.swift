@@ -10,14 +10,22 @@ import Foundation
 import UIKit
 
 let LCLCurrentLanguageKey = "LCLCurrentLanguageKey"
-
 let LCLDefaultLanguage = "en"
-
 let LCLBaseBundle = "Base"
-
+let LCLCurrentTableNameKey = "LCLCurrentTableNameKey"
+let LCLDefaultTableName = "Localizable"
 public let LCLLanguageChangeNotification = "LCLLanguageChangeNotification"
 
 public extension String {
+    
+    /**
+     It search the localized string
+     
+     @return The localized string.
+     */
+    public func localized() -> String {
+        return localized(using: Language.getTableName())
+    }
     
     /**
      It search the localized string
@@ -28,8 +36,7 @@ public extension String {
      
      @return The localized string.
      */
-    public func localized(using tableName: String?, in bundle: Bundle? = .main) -> String {
-        let bundle: Bundle = bundle ?? .main
+    public func localized(using tableName: String, in bundle: Bundle = .main) -> String {
         if let path = bundle.path(forResource: Language.getCurrentLanguage(), ofType: "lproj"),
             let bundle = Bundle(path: path) {
             return bundle.localizedString(forKey: self, value: nil, table: tableName)
@@ -43,6 +50,29 @@ public extension String {
 }
 
 public class Language : NSObject {
+    
+    /**
+     Get the table name
+     
+     @return The current table name
+     **/
+    public class func getTableName() -> String {
+        if let currentTableName = UserDefaults.standard.object(forKey: LCLCurrentTableNameKey) as? String {
+            return currentTableName
+        }
+        return LCLDefaultTableName
+    }
+    
+    
+    /**
+     Set the table name
+     
+     @param The table nameto set
+     **/
+    public class func setTableName(_ name: String) {
+        UserDefaults.standard.set(name, forKey: LCLCurrentTableNameKey)
+        UserDefaults.standard.synchronize()
+    }
 
     /**
      It get the list of all available languages in the app.
@@ -138,7 +168,7 @@ public class Language : NSObject {
      */
     public class func basicAlert(_ languages: [String]) -> UIAlertController {
         
-        let actionSheet = UIAlertController(title: nil, message: "Switch Language".localized(using: "Localizable"), preferredStyle: UIAlertControllerStyle.actionSheet)
+        let actionSheet = UIAlertController(title: nil, message: "Switch Language".localized(), preferredStyle: UIAlertControllerStyle.actionSheet)
         for lang in languages {
             let displayName = Language.displayNameForLanguage(lang)
             let languageAction = UIAlertAction(title: displayName, style: .default, handler: {
@@ -147,7 +177,7 @@ public class Language : NSObject {
             })
             actionSheet.addAction(languageAction)
         }
-        let cancelAction = UIAlertAction(title: "Cancel".localized(using: "Localizable"), style: UIAlertActionStyle.cancel, handler: {
+        let cancelAction = UIAlertAction(title: "Cancel".localized(), style: UIAlertActionStyle.cancel, handler: {
             (alert: UIAlertAction) -> Void in
         })
         actionSheet.addAction(cancelAction)
@@ -163,7 +193,7 @@ public class Language : NSObject {
      */
     public class func flagAlert(_ languages: [String]) -> UIAlertController {
         
-        let actionSheet = UIAlertController(title: nil, message: "Switch Language".localized(using: "Localizable"), preferredStyle: UIAlertControllerStyle.actionSheet)
+        let actionSheet = UIAlertController(title: nil, message: "Switch Language".localized(), preferredStyle: UIAlertControllerStyle.actionSheet)
         
         let imageView = UIImageView()
         actionSheet.view.addSubview(imageView)
@@ -190,6 +220,19 @@ public class Language : NSObject {
         })
         actionSheet.addAction(cancelAction)
         return actionSheet
+    }
+    
+    class func matchFlag(langue: String) -> String{
+        switch langue {
+            case "en": return "gb"
+            case "fr": return "fr"
+            case "it": return "it"
+            case "de": return "de"
+            case "ja": return "jp"
+            case "zh-Hans": return "cn"
+        default:
+            return langue
+        }
     }
     
 }
