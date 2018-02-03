@@ -24,6 +24,10 @@ class CIFrameworkTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        let testBundle = Bundle(for: type(of: self))
+        Language.setCurrentLanguage("fr", bundle: testBundle)
+        XCTAssertEqual("HELLO".localized(using: "Localized", in: testBundle), "Bonjour")
     }
     
     func testPerformanceExample() {
@@ -33,4 +37,39 @@ class CIFrameworkTests: XCTestCase {
         }
     }
     
+    func testSetLanguageFr() {
+        let testBundle = Bundle(for: type(of: self))
+        Language.setCurrentLanguage("fr", bundle: testBundle)
+        XCTAssertEqual(Language.getCurrentLanguage(), "fr")
+    }
+    
+    func testSetLanguageEn() {
+        let testBundle = Bundle(for: type(of: self))
+        Language.setCurrentLanguage("en", bundle: testBundle)
+        XCTAssertEqual(Language.getCurrentLanguage(), "en")
+    }
+    
+    func testSetLanguageIt() {
+        let testBundle = Bundle(for: type(of: self))
+        Language.setCurrentLanguage("it", bundle: testBundle)
+        XCTAssertEqual(Language.getCurrentLanguage(), "it")
+    }
+    
+    func testSetLanguageDe() {
+        let testBundle = Bundle(for: type(of: self))
+        Language.setCurrentLanguage("de", bundle: testBundle)
+        XCTAssertEqual(Language.getCurrentLanguage(), "de")
+    }
+    
+    func testSetLanguageRu() {
+        let testBundle = Bundle(for: type(of: self))
+        Language.setCurrentLanguage("ru", bundle: testBundle)
+        XCTAssertEqual(Language.getCurrentLanguage(), "ru")
+    }
+    
+    func testSetLanguageEs() {
+        let testBundle = Bundle(for: type(of: self))
+        Language.setCurrentLanguage("es", bundle: testBundle)
+        XCTAssertEqual(Language.getCurrentLanguage(), "es")
+    }
 }
