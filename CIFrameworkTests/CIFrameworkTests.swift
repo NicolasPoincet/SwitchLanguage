@@ -21,7 +21,7 @@ class CIFrameworkTests: XCTestCase {
         super.tearDown()
     }
     
- /*   func testSetTableName() {
+    func testSetTableName() {
         Language.setTableName("Translation")
         XCTAssertEqual("Translation", Language.getTableName())
     }
@@ -29,13 +29,10 @@ class CIFrameworkTests: XCTestCase {
     func testSetTableNameFail() {
         Language.setTableName("Localizable")
         XCTAssertNotEqual("Translation", Language.getTableName())
-    }*/
+    }
 
     func testGetDefaultLanguage() {
-        
-        
         let res = Language.getDefaultLanguage()
-        
         XCTAssertEqual("en-US", res)
     }
     
