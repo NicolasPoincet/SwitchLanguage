@@ -1,0 +1,24 @@
+
+/* Class = "UILabel"; text = "Connection"; ObjectID = "1ou-06-AhN"; */
+"1ou-06-AhN.text" = "Connection";
+
+/* Class = "UIButton"; normalTitle = "Reset"; ObjectID = "KMR-VK-b4M"; */
+"KMR-VK-b4M.normalTitle" = "Reset";
+
+/* Class = "UITextField"; text = "Email"; ObjectID = "Nyj-GR-5pj"; */
+"Nyj-GR-5pj.text" = "Email";
+
+/* Class = "UITextField"; text = "Password"; ObjectID = "SCq-ah-Zgu"; */
+"SCq-ah-Zgu.text" = "Password";
+
+/* Class = "UILabel"; text = "Switch Language"; ObjectID = "bQZ-Bg-U1j"; */
+"bQZ-Bg-U1j.text" = "Switch Language";
+
+/* Class = "UILabel"; text = "Password"; ObjectID = "cZu-wy-OJJ"; */
+"cZu-wy-OJJ.text" = "Password";
+
+/* Class = "UIButton"; normalTitle = "Connect"; ObjectID = "jUM-61-Qnz"; */
+"jUM-61-Qnz.normalTitle" = "Connect";
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "tdB-9r-oM9"; */
+"tdB-9r-oM9.text" = "Email";

@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  CIFramework
+
+  Created by Nam Nguyen on 03/02/2018.
+  Copyright © 2018 Nicolas POINCET. All rights reserved.
+*/
+
+"Connection" = "Connection";
+"Email" = "Email";
+"Password" = "Password";
+"Connect" = "Connect";
+"Reset" = "Reset";
+
+"Change" = "Change";
+"Hello World" = "Hello World";
+"Switch Language" = "Switch Language";
