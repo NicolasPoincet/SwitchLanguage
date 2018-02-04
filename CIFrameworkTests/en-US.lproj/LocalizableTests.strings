@@ -1,0 +1,11 @@
+/* 
+  LocalizableTests.strings
+  CIFramework
+
+  Created by Bérangère La Touche on 04/02/2018.
+  Copyright © 2018 Nicolas POINCET. All rights reserved.
+*/
+
+"Change" = "Change";
+"Hello World" = "Hello World";
+"Switch Language" = "Switch Language";

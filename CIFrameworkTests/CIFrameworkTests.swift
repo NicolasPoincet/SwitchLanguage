@@ -111,13 +111,25 @@ class CIFrameworkTests: XCTestCase {
         XCTAssertEqual("French", res)
     }
     
+    func testLocalisableEnglish () {
+        let testBundle = Bundle(for: type(of: self))
+        Language.setCurrentLanguage("en-US", bundle: testBundle)
+        let res1 = "Hello World".localized(using: "LocalizableTests", in: testBundle)
+        let res2 = "Change".localized(using: "LocalizableTests", in: testBundle)
+        let res3 = "Switch Language".localized(using: "LocalizableTests", in: testBundle)
+        
+        
+        XCTAssertEqual("Hello World", res1)
+        XCTAssertEqual("Change", res2)
+        XCTAssertEqual("Switch Language", res3)
+    }
     
     func testLocalisableFrench() {
         let testBundle = Bundle(for: type(of: self))
         Language.setCurrentLanguage("fr", bundle: testBundle)
-        let res1 = "Hello World".localized(using: "Localizable", in: testBundle)
-        let res2 = "Change".localized(using: "Localizable", in: testBundle)
-        let res3 = "Switch Language".localized(using: "Localizable", in: testBundle)
+        let res1 = "Hello World".localized(using: "LocalizableTests", in: testBundle)
+        let res2 = "Change".localized(using: "LocalizableTests", in: testBundle)
+        let res3 = "Switch Language".localized(using: "LocalizableTests", in: testBundle)
         
         
         XCTAssertEqual("Bonjour le monde", res1)
@@ -129,9 +141,9 @@ class CIFrameworkTests: XCTestCase {
     func testLocalisableItalian() {
         let testBundle = Bundle(for: type(of: self))
         Language.setCurrentLanguage("it", bundle: testBundle)
-        let res1 = "Hello World".localized(using: "Localizable", in: testBundle)
-        let res2 = "Change".localized(using: "Localizable", in: testBundle)
-        let res3 = "Switch Language".localized(using: "Localizable", in: testBundle)
+        let res1 = "Hello World".localized(using: "LocalizableTests", in: testBundle)
+        let res2 = "Change".localized(using: "LocalizableTests", in: testBundle)
+        let res3 = "Switch Language".localized(using: "LocalizableTests", in: testBundle)
         
         XCTAssertEqual("Ciao mondo", res1)
         XCTAssertEqual("Modifichi", res2)
