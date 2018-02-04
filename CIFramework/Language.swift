@@ -10,22 +10,19 @@ import Foundation
 import UIKit
 
 let LCLCurrentLanguageKey = "LCLCurrentLanguageKey"
-let LCLDefaultLanguage = "en"
+
+let LCLDefaultLanguage = "en-US"
+
 let LCLBaseBundle = "Base"
-let LCLCurrentTableNameKey = "LCLCurrentTableNameKey"
-let LCLDefaultTableName = "Localizable"
+
 public let LCLLanguageChangeNotification = "LCLLanguageChangeNotification"
 
+
+public protocol LanguageDelegate: class {
+    func language(_ language: Language.Type, getLanguageFlag flag: UIImage)
+}
+
 public extension String {
-    
-    /**
-     It search the localized string
-     
-     @return The localized string.
-     */
-    public func localized() -> String {
-        return localized(using: Language.getTableName())
-    }
     
     /**
      It search the localized string
@@ -36,7 +33,8 @@ public extension String {
      
      @return The localized string.
      */
-    public func localized(using tableName: String, in bundle: Bundle = .main) -> String {
+    public func localized(using tableName: String?, in bundle: Bundle? = .main) -> String {
+        let bundle: Bundle = bundle ?? .main
         if let path = bundle.path(forResource: Language.getCurrentLanguage(), ofType: "lproj"),
             let bundle = Bundle(path: path) {
             return bundle.localizedString(forKey: self, value: nil, table: tableName)
@@ -51,29 +49,8 @@ public extension String {
 
 public class Language : NSObject {
     
-    /**
-     Get the table name
-     
-     @return The current table name
-     **/
-    public class func getTableName() -> String {
-        if let currentTableName = UserDefaults.standard.object(forKey: LCLCurrentTableNameKey) as? String {
-            return currentTableName
-        }
-        return LCLDefaultTableName
-    }
+    public static var delegate : LanguageDelegate?
     
-    
-    /**
-     Set the table name
-     
-     @param The table nameto set
-     **/
-    public class func setTableName(_ name: String) {
-        UserDefaults.standard.set(name, forKey: LCLCurrentTableNameKey)
-        UserDefaults.standard.synchronize()
-    }
-
     /**
      It get the list of all available languages in the app.
      
@@ -138,7 +115,7 @@ public class Language : NSObject {
     /**
      It reset the language with the default language of the app.
      
-     @return String array of available languages.
+     @return Void
      */
     public class func resetCurrentLanguageToDefault() {
         setCurrentLanguage(self.getDefaultLanguage())
@@ -160,6 +137,34 @@ public class Language : NSObject {
     }
     
     /**
+     It get the flag of the current language and display it in the settings button.
+     
+     @return Void
+     */
+    public class func setFlagToButton() {
+        let cLanguage = Language.getCurrentLanguage()
+        
+        let countryCode = cLanguage.split(separator: "-")
+        var newLang : String
+        if (countryCode.count == 2) {
+            newLang = String(countryCode[1])
+        } else {
+            newLang = String(countryCode[0])
+        }
+        
+        let flag = URL(string: "http://www.countryflags.io/\(newLang)/flat/64.png")
+        
+        var cFlag = UIImage()
+        downloadImage(url: flag!) { img in
+            if (img?.cgImage != nil) {
+                cFlag = img!
+                self.delegate?.language(self, getLanguageFlag: cFlag)
+            }
+        }
+        
+    }
+    
+    /**
      It display a basic alert with each names of available languages of the app.
      
      @param [String] array of all available languages.
@@ -168,7 +173,7 @@ public class Language : NSObject {
      */
     public class func basicAlert(_ languages: [String]) -> UIAlertController {
         
-        let actionSheet = UIAlertController(title: nil, message: "Switch Language".localized(), preferredStyle: UIAlertControllerStyle.actionSheet)
+        let actionSheet = UIAlertController(title: nil, message: "Switch Language".localized(using: "Localizable"), preferredStyle: UIAlertControllerStyle.actionSheet)
         for lang in languages {
             let displayName = Language.displayNameForLanguage(lang)
             let languageAction = UIAlertAction(title: displayName, style: .default, handler: {
@@ -177,7 +182,7 @@ public class Language : NSObject {
             })
             actionSheet.addAction(languageAction)
         }
-        let cancelAction = UIAlertAction(title: "Cancel".localized(), style: UIAlertActionStyle.cancel, handler: {
+        let cancelAction = UIAlertAction(title: "Cancel".localized(using: "Localizable"), style: UIAlertActionStyle.cancel, handler: {
             (alert: UIAlertAction) -> Void in
         })
         actionSheet.addAction(cancelAction)
@@ -193,13 +198,21 @@ public class Language : NSObject {
      */
     public class func flagAlert(_ languages: [String]) -> UIAlertController {
         
-        let actionSheet = UIAlertController(title: nil, message: "Switch Language".localized(), preferredStyle: UIAlertControllerStyle.actionSheet)
+        let actionSheet = UIAlertController(title: nil, message: "Switch Language".localized(using: "Localizable"), preferredStyle: UIAlertControllerStyle.actionSheet)
         
         let imageView = UIImageView()
         actionSheet.view.addSubview(imageView)
         
         for lang in languages {
-            let flag = URL(string: "http://www.countryflags.io/\(lang)/flat/64.png")
+            let countryCode = lang.split(separator: "-")
+            var newLang : String
+            if (countryCode.count == 2) {
+                newLang = String(countryCode[1])
+            } else {
+                newLang = String(countryCode[0])
+            }
+            
+            let flag = URL(string: "http://www.countryflags.io/\(newLang)/flat/64.png")
             
             var cFlag = UIImage()
             downloadImage(url: flag!) { img in
@@ -220,19 +233,6 @@ public class Language : NSObject {
         })
         actionSheet.addAction(cancelAction)
         return actionSheet
-    }
-    
-    class func matchFlag(langue: String) -> String{
-        switch langue {
-            case "en": return "gb"
-            case "fr": return "fr"
-            case "it": return "it"
-            case "de": return "de"
-            case "ja": return "jp"
-            case "zh-Hans": return "cn"
-        default:
-            return langue
-        }
     }
     
 }
@@ -266,3 +266,4 @@ extension Language {
     }
     
 }
+
