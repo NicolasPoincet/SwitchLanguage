@@ -11,9 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var mailLabel: UILabel!
     @IBOutlet weak var mailEditTxt: UITextField!
-    @IBOutlet weak var passLabel: UILabel!
     @IBOutlet weak var passEditTxt: UITextField!
     @IBOutlet weak var buttonConnect: UIButton!
     @IBOutlet weak var buttonExit: UIButton!
@@ -23,27 +21,43 @@ class ViewController: UIViewController {
     
     var actionSheet: UIAlertController!
     
-    var imgButtonLang : UIImage!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Language.setCurrentLanguage("en-US")
+        designApp()
         
+        Language.setCurrentLanguage("en-US")
         Language.delegate = self
         
-        print(allLanguage)
         self.setText()
+    }
+    
+    func designApp() {
+        let border = CALayer()
+        let width = CGFloat(2.0)
+        border.borderColor = UIColor.gray.cgColor
+        border.frame = CGRect(x: 0, y: mailEditTxt.frame.size.height - width, width:  mailEditTxt.frame.size.width, height: mailEditTxt.frame.size.height)
+        
+        border.borderWidth = width
+        mailEditTxt.layer.addSublayer(border)
+        mailEditTxt.layer.masksToBounds = true
+        
+        let borderPwd = CALayer()
+        let widthPwd = CGFloat(2.0)
+        borderPwd.borderColor = UIColor.gray.cgColor
+        borderPwd.frame = CGRect(x: 0, y: passEditTxt.frame.size.height - widthPwd, width:  passEditTxt.frame.size.width, height: passEditTxt.frame.size.height)
+        
+        borderPwd.borderWidth = widthPwd
+        passEditTxt.layer.addSublayer(borderPwd)
+        passEditTxt.layer.masksToBounds = true
     }
     
     @objc func setText() {
         titleLabel.text = "Connection".localized(using: "Localizable")
-        mailLabel.text = "Email".localized(using: "Localizable")
-        mailEditTxt.text = "Email".localized(using: "Localizable")
-        passLabel.text = "Password".localized(using: "Localizable")
-        passEditTxt.text = "Password".localized(using: "Localizable")
+        mailEditTxt.placeholder = "Email".localized(using: "Localizable")
+        passEditTxt.placeholder = "Password".localized(using: "Localizable")
         
-        buttonConnect.setTitle("Connect".localized(using: "Localizable"), for: .normal)
+        buttonConnect.setTitle("Submit".localized(using: "Localizable"), for: .normal)
         buttonExit.setTitle("Reset".localized(using: "Localizable"), for: .normal)
         
         Language.setFlagToButton()

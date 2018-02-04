@@ -9,6 +9,7 @@
 "Connection" = "Conexión";
 "Email" = "Email";
 "Password" = "Contraseña";
-"Connect" = "Conectar";
+"Submit" = "Someta";
 "Reset" = "Reiniciar";
-
+"Cancel" = "Cancelación";
+"Switch Language" = "Cambie el lenguaje";

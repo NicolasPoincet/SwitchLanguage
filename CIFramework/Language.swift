@@ -174,7 +174,7 @@ public class Language : NSObject {
      @return Void
      */
     public class func setFlagToButton() {
-        let cLanguage = Language.getCurrentLanguage()
+        let cLanguage = getCurrentLanguage()
         
         let countryCode = cLanguage.split(separator: "-")
         var newLang : String
@@ -207,10 +207,10 @@ public class Language : NSObject {
         
         let actionSheet = UIAlertController(title: nil, message: "Switch Language".localized(), preferredStyle: UIAlertControllerStyle.actionSheet)
         for lang in languages {
-            let displayName = Language.displayNameForLanguage(lang)
+            let displayName = displayNameForLanguage(lang)
             let languageAction = UIAlertAction(title: displayName, style: .default, handler: {
                 (alert: UIAlertAction!) -> Void in
-                Language.setCurrentLanguage(lang)
+                setCurrentLanguage(lang)
             })
             actionSheet.addAction(languageAction)
         }
@@ -251,9 +251,9 @@ public class Language : NSObject {
             downloadImage(url: flag!) { img in
                 if (img?.cgImage != nil) {
                     cFlag = img!
-                    let displayName = Language.displayNameForLanguage(lang)
+                    let displayName = displayNameForLanguage(lang)
                     let languageAction = UIAlertAction(title: displayName, style: .default, handler: { (alert: UIAlertAction!) -> Void  in
-                        Language.setCurrentLanguage(lang)
+                        setCurrentLanguage(lang)
                     })
                     languageAction.setValue(cFlag.withRenderingMode(UIImageRenderingMode.alwaysOriginal), forKey: "image")
                     
@@ -261,7 +261,8 @@ public class Language : NSObject {
                 }
             }
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: {
+
+        let cancelAction = UIAlertAction(title: "Cancel".localized(), style: UIAlertActionStyle.cancel, handler: {
             (alert: UIAlertAction) -> Void in
         })
         actionSheet.addAction(cancelAction)

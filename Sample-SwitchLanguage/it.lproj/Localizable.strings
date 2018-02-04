@@ -9,6 +9,7 @@
 "Connection" = "Connessione";
 "Email" = "E-mail";
 "Password" = "Parola d'ordine";
-"Connect" = "Collegare";
+"Submit" = "Presenti";
 "Reset" = "Reset";
-
+"Cancel" = "Annullamento";
+"Switch Language" = "Passi il linguaggio";

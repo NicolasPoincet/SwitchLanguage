@@ -6,10 +6,10 @@
   Copyright © 2018 Nicolas POINCET. All rights reserved.
 */
 
-"Connection" = "Connection";
-"Email" = "Email";
-"Password" = "Password";
-"Submit" = "Submit";
+"Connection" = "Verbinding";
+"Email" = "E-mail";
+"Password" = "Wachtwoord";
+"Submit" = "Verzenden";
 "Reset" = "Reset";
-"Cancel" = "Cancel";
-"Switch Language" = "Switch Language";
+"Cancel" = "Annuleer";
+"Switch Language" = "Taal wisselen";
