@@ -17,9 +17,8 @@
 		08831E21202677AA00A09EE2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 08831E23202677AA00A09EE2 /* Localizable.strings */; };
 		08E771712027563600BC19A9 /* LocalizableTests.strings in Resources */ = {isa = PBXBuildFile; fileRef = 08E771742027563600BC19A9 /* LocalizableTests.strings */; };
 		08E771722027563600BC19A9 /* LocalizableTests.strings in Resources */ = {isa = PBXBuildFile; fileRef = 08E771742027563600BC19A9 /* LocalizableTests.strings */; };
-		08E7718220278B0400BC19A9 /* CIFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13D870AE2010F0010042070F /* CIFramework.framework */; };
-		08E7718320278B4200BC19A9 /* CIFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13D870AE2010F0010042070F /* CIFramework.framework */; };
-		08E7718420278B4200BC19A9 /* CIFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 13D870AE2010F0010042070F /* CIFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		08E771882027926200BC19A9 /* CIFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13D870AE2010F0010042070F /* CIFramework.framework */; };
+		08E771892027926200BC19A9 /* CIFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 13D870AE2010F0010042070F /* CIFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		134C4E82201E6D1000EF4FB5 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134C4E81201E6D1000EF4FB5 /* Language.swift */; };
 		13548894201FAD2300DB89EE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13548893201FAD2300DB89EE /* UIKit.framework */; };
 		13548896201FAD3700DB89EE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13548895201FAD3700DB89EE /* Foundation.framework */; };
@@ -47,7 +46,7 @@
 			remoteGlobalIDString = 08831DEC202675B600A09EE2;
 			remoteInfo = "Sample-SwitchLanguage";
 		};
-		08E7718520278B4200BC19A9 /* PBXContainerItemProxy */ = {
+		08E7718A2027926200BC19A9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 13D870A52010F0010042070F /* Project object */;
 			proxyType = 1;
@@ -64,13 +63,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		08E7718720278B4200BC19A9 /* Embed Frameworks */ = {
+		08E7718C2027926200BC19A9 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				08E7718420278B4200BC19A9 /* CIFramework.framework in Embed Frameworks */,
+				08E771892027926200BC19A9 /* CIFramework.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -118,8 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				08E7718220278B0400BC19A9 /* CIFramework.framework in Frameworks */,
-				08E7718320278B4200BC19A9 /* CIFramework.framework in Frameworks */,
+				08E771882027926200BC19A9 /* CIFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,12 +262,12 @@
 				08831DE9202675B600A09EE2 /* Sources */,
 				08831DEA202675B600A09EE2 /* Frameworks */,
 				08831DEB202675B600A09EE2 /* Resources */,
-				08E7718720278B4200BC19A9 /* Embed Frameworks */,
+				08E7718C2027926200BC19A9 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				08E7718620278B4200BC19A9 /* PBXTargetDependency */,
+				08E7718B2027926200BC19A9 /* PBXTargetDependency */,
 			);
 			name = "Sample-SwitchLanguage";
 			productName = "Sample-SwitchLanguage";
@@ -516,10 +514,10 @@
 			target = 08831DEC202675B600A09EE2 /* Sample-SwitchLanguage */;
 			targetProxy = 08831E0F202675B600A09EE2 /* PBXContainerItemProxy */;
 		};
-		08E7718620278B4200BC19A9 /* PBXTargetDependency */ = {
+		08E7718B2027926200BC19A9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 13D870AD2010F0010042070F /* CIFramework */;
-			targetProxy = 08E7718520278B4200BC19A9 /* PBXContainerItemProxy */;
+			targetProxy = 08E7718A2027926200BC19A9 /* PBXContainerItemProxy */;
 		};
 		13D870BA2010F0010042070F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
