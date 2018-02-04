@@ -79,7 +79,7 @@ public class Language : NSObject {
      
      @return Array of available languages.
      */
-    public class func getAllLanguages(_ bundle: Bundle) -> [String] {
+    public class func getAllLanguages(_ bundle: Bundle = .main) -> [String] {
         var listLanguages = bundle.localizations
         
         if let indexOfBase = listLanguages.index(of: LCLBaseBundle) {
@@ -220,21 +220,7 @@ public class Language : NSObject {
         })
         actionSheet.addAction(cancelAction)
         return actionSheet
-    }
-    
-    class func matchFlag(langue: String) -> String{
-        switch langue {
-            case "en": return "gb"
-            case "fr": return "fr"
-            case "it": return "it"
-            case "de": return "de"
-            case "ja": return "jp"
-            case "zh-Hans": return "cn"
-        default:
-            return langue
-        }
-    }
-    
+    }    
 }
 
 extension Language {
