@@ -2,7 +2,7 @@
 
 [![Travis CI](https://travis-ci.org/NicolasPoincet/SwitchLanguage.svg?branch=master)](https://travis-ci.org/NicolasPoincet/SwitchLanguage) [![Swift Version](https://img.shields.io/badge/swift-4.0-orange.svg?style=flat)](https://developer.apple.com/swift/) [![SwitchLanguage version](https://cocoapod-badges.herokuapp.com/v/SwitchLanguage/badge.png)](https://cocoapods.org/pods/SwitchLanguage) [![SwitchLanguage Platform](https://cocoapod-badges.herokuapp.com/p/SwitchLanguage/badge.svg)](https://cocoapods.org/pods/SwitchLanguage) [![Readme Score](http://readme-score-api.herokuapp.com/score.svg?url=https://github.com/nicolaspoincet/switchlanguage)](http://clayallsopp.github.io/readme-score?url=https://github.com/nicolaspoincet/switchlanguage) [![codecov](https://codecov.io/gh/NicolasPoincet/SwitchLanguage/branch/master/graph/badge.svg)](https://codecov.io/gh/NicolasPoincet/SwitchLanguage) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-Switch Language help you to easily translate your iOS or tvOS app.
+Switch Language help you to easily translate your iOS app.
 
 ## CocoaPods Setup
 
