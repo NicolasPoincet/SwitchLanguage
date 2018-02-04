@@ -13,3 +13,5 @@ before_install:
   - gem install bundler
   - bundle install
 script: bundle exec fastlane deploy
+after_success:
+  - bash <(curl -s https://codecov.io/bash) -J 'SwitchLanguage' -t $CODECOV_TOKEN

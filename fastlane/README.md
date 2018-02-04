@@ -20,6 +20,8 @@ or alternatively using `brew cask install fastlane`
 fastlane deploy
 ```
 Run before all lane
+
+Deploy project
 ### deploy_develop
 ```
 fastlane deploy_develop
@@ -37,6 +39,11 @@ fastlane new_project_version
 Update project version to the new one
 
 cmd: fastlane new_project_version version:"1.3.9"
+### run_tests
+```
+fastlane run_tests
+```
+Called on error
 
 ----
 

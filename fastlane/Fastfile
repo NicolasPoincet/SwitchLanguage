@@ -3,7 +3,9 @@ before_all do |lane, options|
     MY_PROJECT_NAME = "SwitchLanguage"
     
     if lane != :new_project_version
-        scan
+        scan(
+            code_coverage: true
+        )
     end
 end
 
@@ -111,4 +113,8 @@ error do |lane, exception|
             "Exception" => exception
         }
     )
+end
+
+lane :run_tests do
+    sh("bash <(curl -s https://codecov.io/bash) -J 'SwitchLanguage' -t " + ENV["CODECOV_TOKEN"])
 end
