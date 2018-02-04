@@ -1,7 +1,7 @@
 desc "Run before all lane"
 before_all do |lane, options|
     MY_PROJECT_NAME = "SwitchLanguage"
-    
+
     if lane != :new_project_version
         scan(
             code_coverage: true
@@ -27,7 +27,7 @@ lane :deploy_develop do
         message: "Build success on develop",
         channel: "#integration",
         success: true,
-        payload: { 
+        payload: {
             "Build Date" => Time.new.to_s,
             "Built by" => "Travis",
             "Branch" => git_branch()
@@ -46,7 +46,7 @@ lane :deploy_pod do
         message: "Framework successfully released in version " + get_version_number,
         channel: "#integration",
         success: true,
-        payload: { 
+        payload: {
             "Build Date" => Time.new.to_s,
             "Built by" => "Travis",
             "Branch" => git_branch()
@@ -65,7 +65,7 @@ lane :new_project_version do |options|
         )
 
         increment_build_number
-    
+
         version_bump_podspec(
             path: "SwitchLanguage.podspec",
             version_number: CURRENT_VERSION
@@ -75,7 +75,10 @@ lane :new_project_version do |options|
             path: ["CIFramework.xcodeproj/project.pbxproj",
                     "CIFramework/Info.plist",
                     "CIFrameworkTests/Info.plist",
-                    "SwitchLanguage.podspec"], 
+                    "Sample-SwitchLanguage/Info.plist",
+                    "Sample-SwitchLanguageTests/Info.plist",
+                    "Sample-SwitchLanguageUITests/Info.plist",
+                    "SwitchLanguage.podspec"],
             message: "Update version number to " + CURRENT_VERSION
         )
 
@@ -105,7 +108,7 @@ error do |lane, exception|
         message: "Error on lane " + lane,
         channel: "#integration",
         success: false,
-        payload: { 
+        payload: {
             "Build Date" => Time.new.to_s,
             "Built by" => "Travis",
             "Branch" => git_branch(),
